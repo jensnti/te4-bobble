@@ -27,7 +27,7 @@
             <h1 class="display-4 text-sucess">{{ session()->get('message') }}</h1>
         @else
             <h1 class="display-4 {{ session()->has('regret') ? 'text-danger' : '' }}">
-                Submit your email!
+                {{ session()->has('regret') ? 'Re-Submit your email!' : 'Submit your email!' }}
             </h1>
             <p class="lead">Reserve your right to purchase an amazing product!</p>
             <div>
