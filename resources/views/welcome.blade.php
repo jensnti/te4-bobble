@@ -23,30 +23,36 @@
         </div>
       </header>
       <main class="px-3">
-        <h1 class="display-4">Submit your email!</h1>
-        <p class="lead">Reserve your right to purchase an amazing product!</p>
-        <div>
-          <form action="/" method="post">
-            @csrf
-            <div class="mb-3">
-              <label for="email" class="form-label">Email address</label>
-              <input
-                type="email"
-                class="form-control @error('email') is-invalid @enderror"
-                id="email"
-                name="email"
-                aria-describedby="emailHelp"
-                required>
-              @error('email')
-                <div id="validationServerEmailFeedback" class="invalid-feedback">
-                  {{ $message }}
+        @if(session()->has('message'))
+            <h1 class="display-4 text-sucess">{{ session()->get('message') }}</h1>
+        @else
+            <h1 class="display-4 {{ session()->has('regret') ? 'text-danger' : '' }}">
+                Submit your email!
+            </h1>
+            <p class="lead">Reserve your right to purchase an amazing product!</p>
+            <div>
+            <form action="/" method="post">
+                @csrf
+                <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input
+                    type="email"
+                    class="form-control @error('email') is-invalid @enderror"
+                    id="email"
+                    name="email"
+                    aria-describedby="emailHelp"
+                    required>
+                @error('email')
+                    <div id="validationServerEmailFeedback" class="invalid-feedback">
+                    {{ $message }}
+                    </div>
+                @enderror
+                <div id="emailHelp" class="form-text">We'll share your email with anyone else.</div>
                 </div>
-              @enderror
-              <div id="emailHelp" class="form-text">We'll share your email with anyone else.</div>
+                <button type="submit" class="btn btn-lg btn-light font-weight-bold">Submit</button>
+            </form>
             </div>
-            <button type="submit" class="btn btn-lg btn-light font-weight-bold">Submit</button>
-          </form>
-        </div>
+        @endif
       </main>
       <footer class="mt-auto text-white-50">
         <p class="text-mute">By submitting your email you agree to these Terms of Service, and in

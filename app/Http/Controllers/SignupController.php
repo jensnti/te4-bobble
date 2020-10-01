@@ -44,7 +44,7 @@ class SignupController extends Controller
 
         $signup->save();
 
-        return redirect('/');
+        return redirect('/')->with('message', 'Excellent, we are looking forward to your first-born.');
     }
 
     /**
@@ -96,6 +96,6 @@ class SignupController extends Controller
         $signup = \App\Models\Signup::where('email', $request->input('email'));
         $signup->delete();
 
-        return redirect('/');
+        return redirect('/')->with('regret', 'Regret has been noted.');
     }
 }
