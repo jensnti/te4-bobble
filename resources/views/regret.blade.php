@@ -28,6 +28,7 @@
         <div>
           <form action="/regret" method="post">
             @csrf
+            @method('delete')
             <div class="mb-3">
               <label for="email" class="form-label">Email address</label>
               <input

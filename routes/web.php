@@ -18,4 +18,4 @@ Route::get('/', [SignupController::class, 'index']);
 Route::post('/', [SignupController::class, 'store']);
 
 Route::get('/regret', [SignupController::class, 'edit']);
-Route::post('/regret', [SignupController::class, 'destroy']);
+Route::delete('/regret', [SignupController::class, 'destroy']);
