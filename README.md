@@ -9,6 +9,8 @@ Sidan är prototypad med Bootstrap.
 
 GET /
 POST /
+GET /regret
+DELETE /regret
 
 ## Controller
 
