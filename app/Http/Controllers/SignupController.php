@@ -36,7 +36,7 @@ class SignupController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email' => ['required', 'email']
+            'email' => ['required', 'email', 'unique:signups,email']
         ]);
 
         $signup = new Signup();
@@ -53,7 +53,7 @@ class SignupController extends Controller
      * @param  \App\Models\signup  $signup
      * @return \Illuminate\Http\Response
      */
-    public function show(signup $signup)
+    public function show(Signup $signup)
     {
         //
     }
@@ -64,7 +64,7 @@ class SignupController extends Controller
      * @param  \App\Models\signup  $signup
      * @return \Illuminate\Http\Response
      */
-    public function edit(signup $signup)
+    public function edit(Signup $signup)
     {
         return view('regret');
     }
@@ -76,7 +76,7 @@ class SignupController extends Controller
      * @param  \App\Models\signup  $signup
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, signup $signup)
+    public function update(Request $request, Signup $signup)
     {
         //
     }
@@ -87,8 +87,15 @@ class SignupController extends Controller
      * @param  \App\Models\signup  $signup
      * @return \Illuminate\Http\Response
      */
-    public function destroy(signup $signup)
+    public function destroy(Request $request)
     {
-        //
+        $request->validate([
+            'email' => ['required', 'email']
+        ]);
+
+        $signup = \App\Models\Signup::where('email', $request->input('email'));
+        $signup->delete();
+
+        return redirect('/');
     }
 }

@@ -32,16 +32,16 @@
               <label for="email" class="form-label">Email address</label>
               <input
                 type="email"
-                class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+                class="form-control @error('email') is-invalid @enderror"
                 id="email"
                 name="email"
                 aria-describedby="emailHelp"
                 required>
-              @if ($errors->has('email'))
+              @error('email')
                 <div id="validationServerEmailFeedback" class="invalid-feedback">
-                  {{ $errors->first('email') }}
+                  {{ $message }}
                 </div>
-              @endif
+              @enderror
               <div id="emailHelp" class="form-text">We'll share your email with anyone else.</div>
             </div>
             <button type="submit" class="btn btn-lg btn-light font-weight-bold">Submit</button>
