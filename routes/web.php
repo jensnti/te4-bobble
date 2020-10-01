@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [SignupController::class, 'index']);
 Route::post('/', [SignupController::class, 'store']);
+
+Route::get('/regret', [SignupController::class, 'edit']);
+Route::post('/regret', [SignupController::class, 'destroy']);

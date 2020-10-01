@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\signup;
+use App\Models\Signup;
 use Illuminate\Http\Request;
 
 class SignupController extends Controller
@@ -14,7 +14,7 @@ class SignupController extends Controller
      */
     public function index()
     {
-        //
+        return view('welcome');
     }
 
     /**
@@ -35,7 +35,11 @@ class SignupController extends Controller
      */
     public function store(Request $request)
     {
-        $signup = new signup();
+        $request->validate([
+            'email' => ['required', 'email']
+        ]);
+
+        $signup = new Signup();
         $signup->email = $request->input('email');
 
         $signup->save();
@@ -62,7 +66,7 @@ class SignupController extends Controller
      */
     public function edit(signup $signup)
     {
-        //
+        return view('regret');
     }
 
     /**

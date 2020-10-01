@@ -23,10 +23,10 @@
         </div>
       </header>
       <main class="px-3">
-        <h1 class="display-4">Submit your email!</h1>
-        <p class="lead">Reserve your right to purchase an amazing product!</p>
+        <h1 class="display-4">Regret your submission!</h1>
+        <p class="lead">Withdraw your right to purchase an amazing product!</p>
         <div>
-          <form action="/" method="post">
+          <form action="/regret" method="post">
             @csrf
             <div class="mb-3">
               <label for="email" class="form-label">Email address</label>
@@ -49,10 +49,7 @@
         </div>
       </main>
       <footer class="mt-auto text-white-50">
-        <p class="text-mute">By submitting your email you agree to these Terms of Service, and in
-          exchange for service, all users of this service agree to immediately assign their first-born
-          child to Bobble Inc. All individuals assigned to Bobble Inc. automatically
-          become the property of Bobble Inc. No exceptions, perhaps <a class="link-secondary" href="/regret">regret.</a></p>
+        <p class="text-mute">No exceptions we said.</p>
       </footer>
     </div>
     <!-- Option 1: Bootstrap Bundle with Popper.js -->
